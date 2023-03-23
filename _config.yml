@@ -30,14 +30,14 @@ linkedin_username: fredrick-njoroge
 
 # Build settings
 theme: jekyll-theme-chirpy
-# plugins:
-#  - jekyll-feed
+plugins:
+ - jekyll-feed
 
 # theme_mode: dark
 
-remote_theme: pages-themes/hacker@v0.2.0
-plugins:
-- jekyll-remote-theme
+# remote_theme: pages-themes/hacker@v0.2.0
+# plugins:
+#  - jekyll-remote-theme
 
 # Exclude from processing.
 # The following items will not be processed, by default.
