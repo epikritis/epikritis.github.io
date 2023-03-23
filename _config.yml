@@ -29,7 +29,7 @@ github_username:  epikritis
 linkedin_username: fredrick-njoroge
 
 # Build settings
-# theme: jekyll-theme-chirpy
+theme: jekyll-theme-chirpy
 # plugins:
 #  - jekyll-feed
 
