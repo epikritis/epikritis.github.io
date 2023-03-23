@@ -19,18 +19,21 @@
 # in the templates via {{ site.myvariable }}.
 
 title: The Epikritis
-email: fredrick@epikritis.com
+# email: fredrick@epikritis.com
 description: >- # this means to ignore newlines until "baseurl:"
   Trying out something new...
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "epikritis.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: realepikritis
 github_username:  epikritis
+linkedin_username: fredrick-njoroge
 
 # Build settings
-theme: minima
+theme: jekyll-theme-chirpy
 plugins:
   - jekyll-feed
+
+theme_mode: dark
 
 # Exclude from processing.
 # The following items will not be processed, by default.
