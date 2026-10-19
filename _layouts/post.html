@@ -1,30 +1,22 @@
 ---
 layout: default
 ---
-<link href="/css/override.css" rel="stylesheet" type="text/css">
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        {{ page.date | date: date_format }}
-      </time>
-      {% assign author = page.author | default: site.author %}
-      {%- if author -%}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ author }}</span></span>
-      {%- endif -%}</p>
-  </header>
-
-  <div class="share-links">
+{%- assign words = content | number_of_words -%}
+{%- assign minutes = words | divided_by: 200 | at_least: 1 -%}
+<article class="post container narrow" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="page-header">
+    <a class="back mono" href="{{ '/#writing' | relative_url }}">&larr; back</a>
+    <p class="eyebrow mono">{% for tag in page.tags %}#{{ tag | downcase | replace: ' ', '-' }} {% endfor %}</p>
+    <h1 itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta mono">
+      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
+      &middot; {{ minutes }} min read
+      &middot; <span itemprop="author">{{ page.author | default: site.author }}</span>
+    </p>
     {% include sharelinks.html %}
-  </div>
-
-  <div class="post-content e-content" itemprop="articleBody">
+  </header>
+  <div class="prose" itemprop="articleBody">
     {{ content }}
-    {% include navlinks.html %}
   </div>
-
-  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+  {% include navlinks.html %}
 </article>

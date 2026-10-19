@@ -1,0 +1,53 @@
+# Homepage FAQ. A question only appears on the site once it has an answer.
+# Answers support Markdown. The whole FAQ section is hidden while no answers exist.
+
+- question: What size of organisations do you work with?
+  answer: >-
+    Organisations of every size, from small and medium-sized enterprises to large
+    multinational enterprises. The approach scales to your size, maturity and budget.
+
+- question: Do you work remotely, on-site, or both?
+  answer: >-
+    Both. Most work can be delivered remotely from anywhere in the world, and I'm
+    happy to work on-site when an engagement calls for it.
+
+- question: How does a typical engagement start?
+  answer: >-
+    With a conversation. [Send me a message on LinkedIn](https://www.linkedin.com/in/fredrick-njoroge){:target="_blank" rel="noopener"}
+    with a short description of your challenge, and we'll set up a call to explore
+    scope, goals and timelines.
+
+- question: Can you help us prepare for DORA, NIS2 or ISO 27001?
+  answer: >-
+    Yes. I have implemented an ISO 27001 information security management system (ISMS),
+    and that experience carries over to other frameworks and regulations such as DORA,
+    NIS2 and the NIST CSF. I study each one in the context of your organisation, so the
+    controls fit how you actually operate.
+
+- question: Do you work with our existing security tools, or recommend new ones?
+  answer: >-
+    That depends on what an initial assessment and gap analysis show. Often the best
+    result comes from getting more out of the tools you already have. Where there are
+    genuine gaps, I'll recommend options that fit your environment and budget.
+
+- question: Do you offer short-term projects, ongoing support, or both?
+  answer: >-
+    Both. Engagements can be a defined, short-term project such as an assessment or
+    implementation, or ongoing advisory and support, whichever suits your needs.
+
+- question: How do you handle confidentiality and access to sensitive data?
+  answer: >-
+    Confidentiality is fundamental to my work. I'm glad to sign NDAs and any other
+    confidentiality agreements you require. When a project ends, I securely delete any
+    data collected during it that is confidential, sensitive or covered by the GDPR.
+
+- question: Which time zones do you cover?
+  answer: >-
+    I fully cover European and African time zones. For clients in the Americas, I
+    prefer US Eastern or Central time.
+
+- question: How is pricing structured?
+  answer: >-
+    Pricing depends on the scope, duration and type of engagement.
+    [Get in touch](https://www.linkedin.com/in/fredrick-njoroge){:target="_blank" rel="noopener"}
+    and we can discuss an arrangement that works for you.

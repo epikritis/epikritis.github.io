@@ -1,0 +1,36 @@
+# Shown in the "Toolkit" section of the homepage.
+platforms:
+  - name: Hybrid cloud
+    detail: Securing workloads across on-premises and public cloud
+  - name: XDR
+    detail: Extended Detection & Response
+  - name: SIEM
+    detail: Security Information & Event Management
+  - name: SOAR
+    detail: Security Orchestration, Automation & Response
+  - name: Email security
+    detail: Phishing, BEC and malware protection
+
+frameworks:
+  - group: Security standards
+    items:
+      - name: ISO/IEC 27000 family
+        detail: Information security management systems (ISMS)
+      - name: NIST CSF
+        detail: NIST Cybersecurity Framework
+      - name: NIST SP 800-53
+        detail: Security & privacy controls catalogue
+      - name: Secure Controls Framework
+        detail: Metaframework mapping controls across standards
+  - group: EU regulation
+    items:
+      - name: DORA
+        detail: Digital Operational Resilience Act (financial sector)
+      - name: NIS2
+        detail: Cybersecurity for essential & important entities
+  - group: AI governance
+    items:
+      - name: ISO/IEC 42001
+        detail: AI management systems
+      - name: EU AI Act
+        detail: EU regulation on artificial intelligence

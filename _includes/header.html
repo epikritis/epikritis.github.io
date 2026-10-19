@@ -1,0 +1,22 @@
+<header class="site-header" id="top">
+  <nav class="nav container" aria-label="Main">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Home">
+      <span class="brand-mark" aria-hidden="true">&gt;_</span><span class="brand-name">epikritis</span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    {%- assign home = '/' | relative_url -%}
+    {%- if page.layout == 'home' -%}{%- assign home = '' -%}{%- endif -%}
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="{{ home }}#about">About</a></li>
+      <li><a href="{{ home }}#services">Services</a></li>
+      <li><a href="{{ home }}#expertise">Expertise</a></li>
+      <li><a href="{{ home }}#certifications">Credentials</a></li>
+      <li><a href="{{ home }}#project">Project</a></li>
+      <li><a href="{{ home }}#writing">Writing</a></li>
+      <li><a href="{{ site.blog_url }}" target="_blank" rel="noopener">Blog</a></li>
+      <li><a class="btn btn-sm btn-primary" href="{{ home }}#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>

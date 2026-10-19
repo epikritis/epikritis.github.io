@@ -1,1 +1,11 @@
-﻿_site
+_site
+
+# Secrets & keys — never commit these
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+secrets.*
+credentials*.json

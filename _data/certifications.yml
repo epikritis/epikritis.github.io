@@ -1,0 +1,22 @@
+# Shown in the "Certifications" section of the homepage.
+- code: CISSP
+  name: Certified Information Systems Security Professional
+  issuer: ISC2
+- code: CCSK
+  name: Certificate of Cloud Security Knowledge
+  issuer: Cloud Security Alliance
+- code: SC-100
+  name: Microsoft Cybersecurity Architect Expert
+  issuer: Microsoft
+- code: AZ-500
+  name: Azure Security Engineer Associate
+  issuer: Microsoft
+- code: SC-200
+  name: Security Operations Analyst Associate
+  issuer: Microsoft
+- code: CDP
+  name: Certified DevSecOps Professional
+  issuer: Practical DevSecOps
+- code: GCFA
+  name: GIAC Certified Forensic Analyst
+  issuer: GIAC

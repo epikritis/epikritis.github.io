@@ -1,0 +1,13 @@
+---
+layout: default
+---
+<section class="page container narrow">
+  <header class="page-header reveal">
+    <p class="eyebrow mono">// {{ page.title | downcase }}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p class="lead">{{ page.description }}</p>{% endif %}
+  </header>
+  <div class="prose reveal">
+    {{ content }}
+  </div>
+</section>

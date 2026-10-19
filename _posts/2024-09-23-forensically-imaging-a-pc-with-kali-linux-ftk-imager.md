@@ -1,3 +1,8 @@
+---
+title: "Forensically Imaging a PC with Kali Linux & FTK Imager"
+tags: [Digital Forensics]
+---
+
 PS:
 - This blog post was originally created on Sep 8, 2021 and has recently been migrated to this platform.
 - I made a few changes to the original article since Exterro acquired AccessData in 2020 (https://www.exterro.com/about/news/exterro-acquires-accessdata-to-form-the-leading-enterprise-legal-grc-software-platform-across-data-privacy-forensics-and-e-discovery).
