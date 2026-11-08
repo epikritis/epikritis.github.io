@@ -1,8 +1,6 @@
 <nav class="post-nav" aria-label="More posts">
   {%- if page.previous.url -%}
   <a class="post-nav-item" href="{{ page.previous.url | relative_url }}"><span class="muted mono">&larr; previous</span><span>{{ page.previous.title }}</span></a>
-  {%- else -%}
-  <a class="post-nav-item" href="{{ '/archive.html' | relative_url }}"><span class="muted mono">&larr; archive</span><span>All posts</span></a>
   {%- endif -%}
   {%- if page.next.url -%}
   <a class="post-nav-item next" href="{{ page.next.url | relative_url }}"><span class="muted mono">next &rarr;</span><span>{{ page.next.title }}</span></a>

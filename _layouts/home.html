@@ -218,18 +218,6 @@ layout: default
   <div class="center reveal">
     <a class="btn btn-ghost" href="{{ site.blog_url }}" target="_blank" rel="noopener">{% include icons.html name='pen' %} More at blog.epikritis.com</a>
   </div>
-
-  {% if site.posts.size > 0 %}
-  <div class="local-posts reveal">
-    <p class="eyebrow mono">// also on this site</p>
-    <ul class="archive-list">
-      {% for post in site.posts limit: 3 %}
-      <li><a href="{{ post.url | relative_url }}"><time>{{ post.date | date: "%b %Y" }}</time><span>{{ post.title }}</span></a></li>
-      {% endfor %}
-    </ul>
-    <a class="mono small" href="{{ '/archive.html' | relative_url }}">view archive &rarr;</a>
-  </div>
-  {% endif %}
 </section>
 
 <!-- FAQ (only answered questions are shown) -->

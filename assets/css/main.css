@@ -284,13 +284,6 @@ p { margin: 0 0 1em; }
 .post-card:hover .post-card-link .icon { transform: translate(3px, -3px); }
 .post-card-link .icon { transition: transform .25s var(--ease); }
 
-.local-posts { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px dashed var(--border); }
-
-.archive-list { list-style: none; padding: 0; margin: 0 0 1rem; }
-.archive-list li a { display: flex; gap: 1.2rem; padding: .85rem .2rem; border-bottom: 1px solid var(--border); color: var(--text); }
-.archive-list li a:hover { color: var(--accent); }
-.archive-list time { font-family: var(--mono); color: var(--text-muted); font-size: .85rem; min-width: 7ch; padding-top: .15rem; }
-.archive-tag { font-size: 1.1rem; font-family: var(--mono); color: var(--accent); margin-top: 2rem; }
 
 /* ---------- Contact ---------- */
 .contact {

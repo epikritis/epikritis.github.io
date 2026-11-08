@@ -27,7 +27,7 @@ tags: [Threat Detection]
 Your content in Markdown...
 ```
 
-Commit and push — it will appear on the homepage ("also on this site") and in `/archive.html`.
+Commit and push — it will be published at its own URL, `/YYYY/MM/DD/my-post-title.html`.
 
 ## Preview locally
 
