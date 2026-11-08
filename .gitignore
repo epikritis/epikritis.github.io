@@ -9,3 +9,6 @@ _site
 *.pfx
 secrets.*
 credentials*.json
+
+# Local notes, not published to the repo
+README.md
