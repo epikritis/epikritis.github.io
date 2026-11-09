@@ -338,6 +338,7 @@ p { margin: 0 0 1em; }
   background: var(--bg-2); border: 1px dashed var(--border-strong);
 }
 .contact .lead { margin: 0 auto 2rem; }
+.contact-actions { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
 
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 2rem; }

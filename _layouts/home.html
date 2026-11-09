@@ -244,7 +244,10 @@ layout: default
   <div class="contact reveal">
     <p class="eyebrow mono">// contact</p>
     <h2>Let's secure what matters to you.</h2>
-    <p class="lead">Need an assessment, a security capability designed and built, or an expert on call? I'm based in the Netherlands and work remotely with clients worldwide. Send me a message on LinkedIn.</p>
-    <a class="btn btn-primary btn-lg" href="{{ site.linkedin_url }}" target="_blank" rel="noopener">{% include icons.html name='linkedin' %} Message me on LinkedIn</a>
+    <p class="lead">Need an assessment, a security capability designed and built, or an expert on call? I'm based in the Netherlands and work remotely with clients worldwide. Send me an email or a message on LinkedIn.</p>
+    <div class="contact-actions">
+      <a class="btn btn-primary btn-lg" href="mailto:{{ site.email }}">{% include icons.html name='envelope' %} Email me</a>
+      <a class="btn btn-ghost btn-lg" href="{{ site.linkedin_url }}" target="_blank" rel="noopener">{% include icons.html name='linkedin' %} Message me on LinkedIn</a>
+    </div>
   </div>
 </section>
