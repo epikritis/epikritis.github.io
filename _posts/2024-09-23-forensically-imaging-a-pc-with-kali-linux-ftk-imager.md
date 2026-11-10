@@ -1,6 +1,7 @@
 ---
 title: "Forensically Imaging a PC with Kali Linux & FTK Imager"
 tags: [Digital Forensics]
+published: false
 ---
 
 PS:
