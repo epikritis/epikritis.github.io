@@ -13,3 +13,4 @@ credentials*.json
 # Local notes, not published to the repo
 README.md
 CLAUDE.md
+NOTES-local.md
