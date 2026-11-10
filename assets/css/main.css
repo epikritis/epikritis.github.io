@@ -57,7 +57,7 @@
   --mark-grad: linear-gradient(transparent 55%, var(--mark-bg) 55%, var(--mark-bg) 92%, transparent 92%);
   --accent-glow: rgba(29, 78, 216, .22);
   --glow: none;
-  --backdrop: radial-gradient(color-mix(in srgb, var(--accent) 14%, transparent) 1px, transparent 1.4px) 0 0 / 22px 22px;
+  --backdrop: none;
   --net: 29, 78, 216;
   --code-bg: #f5f7fc;
   color-scheme: light;
@@ -116,6 +116,7 @@ p { margin: 0 0 1em; }
 
 /* ---------- Background ---------- */
 #bg-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none; opacity: .55; }
+[data-theme="light"] #bg-canvas { display: none; }
 .bg-glow { position: fixed; inset: 0; z-index: -1; pointer-events: none; background: var(--backdrop); }
 
 /* ---------- Buttons ---------- */
@@ -186,8 +187,6 @@ p { margin: 0 0 1em; }
 /* ---------- Hero ---------- */
 .hero { display: grid; grid-template-columns: 1.25fr .75fr; gap: 3rem; align-items: center; min-height: calc(100vh - 64px); padding-top: 3rem; padding-bottom: 4rem; }
 .hero h1 { margin-bottom: 1.6rem; }
-.pulse { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 var(--accent-glow); animation: pulse 2s infinite; }
-@keyframes pulse { 0% { box-shadow: 0 0 0 0 var(--accent-glow); } 70% { box-shadow: 0 0 0 12px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
 
 .terminal { background: var(--bg-2); border: 1px solid var(--border-strong); border-radius: var(--radius); max-width: 520px; margin-bottom: 2rem; overflow: hidden; }
 .terminal-bar { display: flex; align-items: center; gap: 6px; padding: .5rem .8rem; border-bottom: 1px solid var(--border); }
