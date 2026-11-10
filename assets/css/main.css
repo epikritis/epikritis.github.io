@@ -88,7 +88,6 @@ a:hover { color: var(--text-strong); }
 h1, h2, h3 { color: var(--text-strong); line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 .6em; text-shadow: var(--glow); }
 h1 { font-size: clamp(1.9rem, 4.6vw, 3.2rem); font-weight: 800; }
 h2 { font-size: clamp(1.5rem, 3vw, 2.15rem); font-weight: 700; }
-h2::before { content: "# "; color: var(--hl); text-shadow: none; }
 h3 { font-size: 1.1rem; font-weight: 600; }
 p { margin: 0 0 1em; }
 
