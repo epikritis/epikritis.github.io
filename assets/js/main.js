@@ -151,6 +151,72 @@
     });
   });
 
+  /* ---------- Contact form ----------
+     Input is only ever sent out as form data. It is never written into the page,
+     and status messages are fixed strings set with textContent. The checks below
+     are defence in depth; Formspree validates and encodes again on its side. */
+  var contactForm = document.querySelector('[data-contact-form]');
+  if (contactForm && window.fetch && window.FormData) {
+    var cfEmail = contactForm.elements.email;
+    var cfMessage = contactForm.elements.message;
+    var cfTrap = contactForm.elements._gotcha;
+    var cfStatus = contactForm.querySelector('.cf-status');
+    var cfSend = contactForm.querySelector('button[type="submit"]');
+    var cfEndpoint = contactForm.getAttribute('action');
+
+    // Strict allowlist: no whitespace, quotes, angle brackets or CR/LF (blocks header injection).
+    var EMAIL_RE = /^[A-Za-z0-9._%+-]{1,64}@(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+[A-Za-z]{2,63}$/;
+    // Control characters (except tab/newline) and bidi overrides that can disguise text.
+    var UNSAFE_CHARS_RE = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F‪-‮⁦-⁩]/g;
+    var MARKUP_RE = /<\/?[a-z!?][^>]*>|javascript\s*:/i;
+
+    var setStatus = function (text, kind) {
+      cfStatus.textContent = text;
+      cfStatus.classList.toggle('is-error', kind === 'error');
+      cfStatus.classList.toggle('is-ok', kind === 'ok');
+    };
+    var fail = function (field, text) {
+      field.setAttribute('aria-invalid', 'true');
+      field.focus();
+      setStatus(text, 'error');
+    };
+    [cfEmail, cfMessage].forEach(function (f) {
+      f.addEventListener('input', function () { f.removeAttribute('aria-invalid'); });
+    });
+
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (cfSend.disabled) return;
+      if (cfTrap && cfTrap.value) { contactForm.reset(); setStatus('Message sent. Thanks!', 'ok'); return; }
+
+      var email = cfEmail.value.trim();
+      var message = cfMessage.value.replace(/\r\n?/g, '\n').replace(UNSAFE_CHARS_RE, '').trim();
+
+      if (email.length > 254 || !EMAIL_RE.test(email)) return fail(cfEmail, 'Please enter a valid email address.');
+      if (message.length < 10) return fail(cfMessage, 'Please write a slightly longer message.');
+      if (message.length > 5000) return fail(cfMessage, 'Please keep your message under 5000 characters.');
+      if (MARKUP_RE.test(message)) return fail(cfMessage, 'Please remove any HTML or script from your message.');
+
+      var data = new FormData();
+      data.append('email', email);
+      data.append('message', message);
+      data.append('_subject', contactForm.elements._subject.value);
+
+      cfSend.disabled = true;
+      setStatus('Sending…', null);
+      fetch(cfEndpoint, { method: 'POST', body: data, headers: { Accept: 'application/json' }, credentials: 'omit' })
+        .then(function (res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          contactForm.reset();
+          setStatus('Message sent. I\'ll get back to you soon.', 'ok');
+        })
+        .catch(function () {
+          setStatus('Something went wrong. Please try again, or message me on LinkedIn.', 'error');
+        })
+        .then(function () { cfSend.disabled = false; });
+    });
+  }
+
   /* ---------- Background network canvas ---------- */
   var canvas = document.getElementById('bg-canvas');
   if (!canvas || reduceMotion) return;

@@ -338,6 +338,28 @@ p { margin: 0 0 1em; }
 .contact .lead { margin: 0 auto 2rem; }
 .contact-actions { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
 
+.contact-form { max-width: 640px; margin: 0 auto 1.5rem; text-align: left; display: grid; gap: 1.1rem; }
+.field { display: grid; gap: .4rem; }
+.field label { font-size: .82rem; color: var(--hl); }
+.field label::before { content: "> "; }
+.field input, .field textarea {
+  width: 100%; font: inherit; font-size: 1rem; line-height: 1.5;
+  color: var(--text-strong); background: var(--surface);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
+  padding: .75rem .9rem; transition: border-color .2s, box-shadow .2s;
+}
+.field textarea { resize: vertical; min-height: 9rem; }
+.field input::placeholder, .field textarea::placeholder { color: var(--text-muted); opacity: .75; }
+.field input:focus, .field textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+.field [aria-invalid="true"] { border-color: var(--hl); }
+.cf-trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.cf-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+.cf-footer .btn { margin-left: auto; }
+.cf-status { margin: 0; font-size: .85rem; color: var(--text-muted); min-height: 1.4em; flex: 1 1 14rem; }
+.cf-status.is-error { color: var(--hl); }
+.cf-status.is-ok { color: var(--accent); }
+.btn:disabled { opacity: .6; cursor: progress; transform: none; box-shadow: none; }
+
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 2rem; }
 .footer-inner { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; }

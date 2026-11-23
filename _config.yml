@@ -12,6 +12,10 @@ email: "fredrick@epikritis.com"
 github_url: "https://github.com/epikritis"
 blog_url: "https://blog.epikritis.com"
 
+# Contact form: the form ID from formspree.io (the part after /f/ in the endpoint).
+# Leave empty to show the plain "Email me" button instead of the form.
+formspree_id: "xjywpayo"
+
 github_username: "epikritis"
 linkedin_username: "fredrick-njoroge"
 
