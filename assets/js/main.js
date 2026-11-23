@@ -35,20 +35,24 @@
 
   /* ---------- Header: scrolled state ---------- */
   var header = document.querySelector('.site-header');
-  function onScroll() { header.classList.toggle('scrolled', window.scrollY > 10); }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  if (header) {
+    var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 10); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
 
   /* ---------- Mobile menu ---------- */
   var toggle = document.querySelector('.nav-toggle');
   var menu = document.getElementById('nav-menu');
-  function setMenu(open) {
-    toggle.setAttribute('aria-expanded', String(open));
-    menu.classList.toggle('open', open);
+  if (toggle && menu) {
+    var setMenu = function (open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      menu.classList.toggle('open', open);
+    };
+    toggle.addEventListener('click', function () { setMenu(toggle.getAttribute('aria-expanded') !== 'true'); });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
   }
-  toggle.addEventListener('click', function () { setMenu(toggle.getAttribute('aria-expanded') !== 'true'); });
-  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
 
   /* ---------- Reveal on scroll ---------- */
   var reveals = document.querySelectorAll('.reveal');
@@ -159,10 +163,10 @@
   if (contactForm && window.fetch && window.FormData) {
     var cfEmail = contactForm.elements.email;
     var cfMessage = contactForm.elements.message;
-    var cfTrap = contactForm.elements._gotcha;
     var cfStatus = contactForm.querySelector('.cf-status');
     var cfSend = contactForm.querySelector('button[type="submit"]');
-    var cfEndpoint = contactForm.getAttribute('action');
+    var cfEndpoint = contactForm.getAttribute('data-endpoint');
+    cfSend.disabled = false;
 
     // Strict allowlist: no whitespace, quotes, angle brackets or CR/LF (blocks header injection).
     var EMAIL_RE = /^[A-Za-z0-9._%+-]{1,64}@(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+[A-Za-z]{2,63}$/;
@@ -174,6 +178,18 @@
       cfStatus.textContent = text;
       cfStatus.classList.toggle('is-error', kind === 'error');
       cfStatus.classList.toggle('is-ok', kind === 'ok');
+    };
+    // Five random digits (leading zeros kept), e.g. "04817". Uses the browser's secure RNG where available.
+    var inquiryId = function () {
+      var n;
+      if (window.crypto && crypto.getRandomValues) {
+        var buf = new Uint32Array(1);
+        do { crypto.getRandomValues(buf); } while (buf[0] >= 4294900000); // drop the top sliver so every ID is equally likely
+        n = buf[0] % 100000;
+      } else {
+        n = Math.floor(Math.random() * 100000);
+      }
+      return ('0000' + n).slice(-5);
     };
     var fail = function (field, text) {
       field.setAttribute('aria-invalid', 'true');
@@ -187,7 +203,6 @@
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
       if (cfSend.disabled) return;
-      if (cfTrap && cfTrap.value) { contactForm.reset(); setStatus('Message sent. Thanks!', 'ok'); return; }
 
       var email = cfEmail.value.trim();
       var message = cfMessage.value.replace(/\r\n?/g, '\n').replace(UNSAFE_CHARS_RE, '').trim();
@@ -200,7 +215,7 @@
       var data = new FormData();
       data.append('email', email);
       data.append('message', message);
-      data.append('_subject', contactForm.elements._subject.value);
+      data.append('_subject', 'Inquiry #' + inquiryId());
 
       cfSend.disabled = true;
       setStatus('Sending…', null);
@@ -208,7 +223,7 @@
         .then(function (res) {
           if (!res.ok) throw new Error('HTTP ' + res.status);
           contactForm.reset();
-          setStatus('Message sent. I\'ll get back to you soon.', 'ok');
+          setStatus('Thank you! Your message has been sent. I\'ll get back to you soon.', 'ok');
         })
         .catch(function () {
           setStatus('Something went wrong. Please try again, or message me on LinkedIn.', 'error');

@@ -244,8 +244,9 @@ layout: default
     <h2>Let's secure what matters to you.</h2>
     <p class="lead">Need an assessment, a security capability designed and built, or an expert on call? I'm based in the Netherlands and work remotely with clients worldwide. {% if site.formspree_id %}Send me a message below or reach out on LinkedIn.{% else %}Send me an email or a message on LinkedIn.{% endif %}</p>
     {% if site.formspree_id %}
-    <!-- Submissions go to Formspree, which emails them on. Nothing typed here is ever written back into the page. -->
-    <form class="contact-form" action="https://formspree.io/f/{{ site.formspree_id | uri_escape }}" method="POST" accept-charset="UTF-8" data-contact-form>
+    <!-- main.js sends this in the background and shows the result on the page. There is no action
+         attribute and Send stays disabled until the script is ready, so the browser never leaves the site. -->
+    <form class="contact-form" method="POST" accept-charset="UTF-8" data-contact-form data-endpoint="https://formspree.io/f/{{ site.formspree_id | uri_escape }}">
       <div class="field">
         <label for="cf-email">your email</label>
         <input id="cf-email" name="email" type="email" required maxlength="254" autocomplete="email" autocapitalize="off" spellcheck="false" inputmode="email"
@@ -255,19 +256,12 @@ layout: default
         <label for="cf-message">message</label>
         <textarea id="cf-message" name="message" required minlength="10" maxlength="5000" rows="6" placeholder="How can I help?"></textarea>
       </div>
-      <input type="hidden" name="_subject" value="New message from epikritis.com">
-      <div class="cf-trap" aria-hidden="true">
-        <label for="cf-gotcha">Leave this field empty</label>
-        <input id="cf-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+      <div class="contact-actions">
+        <button class="btn btn-primary btn-lg" type="submit" disabled>{% include icons.html name='envelope' %} Send</button>
+        <a class="btn btn-ghost btn-lg" href="{{ site.linkedin_url }}" target="_blank" rel="noopener">{% include icons.html name='linkedin' %} Message me on LinkedIn</a>
       </div>
-      <div class="cf-footer">
-        <p class="cf-status" role="status" aria-live="polite"></p>
-        <button class="btn btn-primary btn-lg" type="submit">{% include icons.html name='envelope' %} Send</button>
-      </div>
+      <p class="cf-status" role="status" aria-live="polite"></p>
     </form>
-    <div class="contact-actions">
-      <a class="btn btn-ghost btn-lg" href="{{ site.linkedin_url }}" target="_blank" rel="noopener">{% include icons.html name='linkedin' %} Message me on LinkedIn</a>
-    </div>
     {% else %}
     <div class="contact-actions">
       <a class="btn btn-primary btn-lg" href="mailto:{{ site.email }}">{% include icons.html name='envelope' %} Email me</a>
